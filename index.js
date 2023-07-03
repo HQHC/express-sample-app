@@ -15,6 +15,7 @@ app.all('/*', async (req, res) => {
         method,
         url: `https://api.openai.com${originalUrl}`,
         headers: {
+         "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         },
         params: query,
