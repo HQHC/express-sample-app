@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.all('/api/*', async (req, res) => {
+app.all('/*', async (req, res) => {
     try {
       const { method, originalUrl, body, query } = req;
 
