@@ -9,12 +9,13 @@ app.all('/*', async (req, res) => {
     try {
       const { method, originalUrl, body, query, headers } = req;
 
-      console.log(process.env.OPENAI_API_KEY)
-  
       const response = await axios({
         method,
         url: `https://api.openai.com${originalUrl}`,
-        headers,
+        headers: {
+            "Content-Type": "application/json",
+            "authorization": headers.authorization
+        },
         params: query,
         data: body,
       });
