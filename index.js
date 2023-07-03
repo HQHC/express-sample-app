@@ -7,17 +7,14 @@ app.use(express.json());
 
 app.all('/*', async (req, res) => {
     try {
-      const { method, originalUrl, body, query } = req;
+      const { method, originalUrl, body, query, headers } = req;
 
       console.log(process.env.OPENAI_API_KEY)
   
       const response = await axios({
         method,
         url: `https://api.openai.com${originalUrl}`,
-        headers: {
-         "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
+        headers,
         params: query,
         data: body,
       });
