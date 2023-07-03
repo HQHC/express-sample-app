@@ -24,7 +24,7 @@ app.all('/*', async (req, res) => {
   
       res.json(response.data);
     } catch (error) {
-      console.error(error);
+      console.error(JSON.stringify(error));
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
