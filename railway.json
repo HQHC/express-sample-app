@@ -1,0 +1,9 @@
+{
+  "services": [
+    {
+      "name": "proxy",
+      "port": 3000,
+      "command": "npm start"
+    }
+  ]
+}
