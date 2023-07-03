@@ -21,6 +21,8 @@ app.all('/*', async (req, res) => {
         params: query,
         data: body,
       });
+
+      console.log(response.data)
   
       res.json(response.data);
     } catch (error) {
