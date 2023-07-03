@@ -20,7 +20,8 @@ app.all('/*', async (req, res) => {
         data: body,
       });
 
-      console.log(response.data)
+      console.log('requestBody', body);
+      console.log('responseBody', response.data)
   
       res.json(response.data);
     } catch (error) {
