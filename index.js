@@ -1,16 +1,14 @@
-import express from 'express';
+const express = require('express');
+const request = require('request');
+
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Choo Choo! Welcome to your Express app 🚅');
-})
-
-app.get("/json", (req, res) => {
-    res.json({"Choo Choo": "Welcome to your Express app 🚅"});
-})
+app.use('/', (req, res) => {
+  const url = `https://api.openai.com${req.url}`;
+  req.pipe(request(url)).pipe(res);
+});
 
 const port = process.env.PORT || 3000;
-
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Proxy server listening on port ${port}`);
+});
